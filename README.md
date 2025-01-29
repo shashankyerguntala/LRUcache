@@ -1,18 +1,33 @@
-## Getting Started
+# Java Program to Implement an LRU Cache
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Problem Statement
+Implement a basic version of a Least Recently Used (LRU) Cache with `get` and `put` operations.
 
-## Folder Structure
+## Approach
+The LRU Cache is implemented using a doubly linked list and a hash map:
+- The doubly linked list maintains the order of elements based on their usage.
+- The hash map provides O(1) access to the nodes in the linked list.
 
-The workspace contains two folders by default, where:
+## Code Explanation
+- The `LRUCache` class contains a doubly linked list and a hash map.
+- The `put` method inserts or updates a value and ensures the cache does not exceed its capacity.
+- The `get` method retrieves a value and updates the usage order.
+- The `remove` and `insert` helper methods manage the linked list operations.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## How to Run
+1. Save the code in the `src` directory.
+2. Open a terminal and navigate to the `LRUCacheProject` directory.
+3. Compile the code using: `javac src/Main.java`
+4. Run the compiled code using: `java -cp src Main`
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Test Cases
+- Capacity: 2
+  - `put(1, 1)`
+  - `put(2, 2)`
+  - `get(1)` -> returns 1
+  - `put(3, 3)` -> evicts key 2
+  - `get(2)` -> returns -1 (not found)
+  - `put(4, 4)` -> evicts key 1
+  - `get(1)` -> returns -1 (not found)
+  - `get(3)` -> returns 3
+  - `get(4)` -> returns 4
